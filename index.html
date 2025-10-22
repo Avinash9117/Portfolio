@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venkata Avinash Irupani - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .macbook-container {
+            perspective: 1000px;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .macbook-display {
+            transition: all 0.3s ease;
+        }
+        
+        .macbook-display:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 50px rgba(59, 130, 246, 0.3);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotateX(0deg); }
+            50% { transform: translateY(-10px) rotateX(2deg); }
+        }
+        
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+        
+        .animation-delay-4000 {
+            animation-delay: 4s;
+        }
+        
+        .macbook-screen::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.05) 50%, transparent 70%);
+            animation: screenShine 4s infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes screenShine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .click-button {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        }
+        
+        .click-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+        }
+        
+        .portfolio-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .nav-link {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .project-card {
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .skill-tag {
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .skill-tag:hover {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            transition: all 0.3s ease;
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        
+        
+        .hidden {
+            display: none !important;
+        }
+        
+        .slide-in-left {
+            animation: slideInLeft 0.8s ease-out;
+        }
+        
+        .slide-in-right {
+            animation: slideInRight 0.8s ease-out;
+        }
+        
+        .slide-in-up {
+            animation: slideInUp 0.8s ease-out;
+        }
+        
+        .slide-in-scale {
+            animation: slideInScale 0.8s ease-out;
+        }
+        
+        @keyframes slideInLeft {
+            from { 
+                opacity: 0; 
+                transform: translateX(-100px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes slideInRight {
+            from { 
+                opacity: 0; 
+                transform: translateX(100px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes slideInUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(50px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInScale {
+            from { 
+                opacity: 0; 
+                transform: scale(0.8);
+            }
+            to { 
+                opacity: 1; 
+                transform: scale(1);
+            }
+        }
+        
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        .stagger-5 { animation-delay: 0.5s; }
+        
+        .experience-item {
+            border-left: 3px solid #3b82f6;
+            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -0.5rem;
+            top: 0;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background: #3b82f6;
+        }
+        
+        .divider {
+            border-top: 1px solid #e5e7eb;
+            margin: 1.5rem 0;
+        }
+        
+        .tech-icon {
+            width: 24px;
+            height: 24px;
+            display: inline-block;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #fff;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cert-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            margin: 0 8px 8px 0;
+        }
+        
+        .project-image {
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px 8px 0 0;
+        }
+        
+        /* Mobile Navigation */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        
+        .mobile-nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+        }
+        
+        .mobile-nav-links {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            display: none;
+            flex-direction: column;
+            padding: 1rem 0;
+        }
+        
+        .mobile-nav-links.active {
+            display: flex;
+        }
+        
+        .mobile-nav-link {
+            padding: 0.75rem 1.5rem;
+            color: #374151;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .mobile-nav-link:hover {
+            background: #f3f4f6;
+            color: #3b82f6;
+        }
+        
+        .mobile-nav-link.active {
+            color: #3b82f6;
+            background: #eff6ff;
+        }
+        
+        .mobile-nav-link i {
+            margin-right: 0.5rem;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+        }
+        
+        .hamburger span {
+            height: 3px;
+            width: 100%;
+            background: #374151;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            transform-origin: left;
+        }
+        
+        .hamburger span:nth-child(2) {
+            margin: 6px 0;
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .macbook-container {
+                transform: scale(0.9);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .macbook-container {
+                display: none;
+            }
+            
+            .desktop-nav {
+                display: none;
+            }
+            
+            .mobile-nav {
+                display: block;
+            }
+            
+            .portfolio-section {
+                min-height: auto;
+                padding: 5rem 0;
+            }
+            
+            .profile-image {
+                width: 150px;
+                height: 150px;
+            }
+            
+            h1 {
+                font-size: 2.5rem !important;
+            }
+            
+            h2 {
+                font-size: 2rem !important;
+            }
+            
+            h3 {
+                font-size: 1.5rem !important;
+            }
+            
+            .text-5xl {
+                font-size: 2.25rem;
+            }
+            
+            .text-6xl {
+                font-size: 2.5rem;
+            }
+            
+            .grid-cols-3 {
+                grid-template-columns: repeat(1, 1fr);
+            }
+            
+            .grid-cols-3 > div {
+                margin-bottom: 1.5rem;
+            }
+            
+            .experience-item {
+                padding-left: 1rem;
+                margin-left: 0.5rem;
+            }
+            
+            .project-card {
+                margin-bottom: 1.5rem;
+            }
+            
+            .flex-wrap {
+                justify-content: center;
+            }
+            
+            .skill-tag {
+                margin-bottom: 0.5rem;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .portfolio-section {
+                padding: 4rem 0;
+            }
+            
+            .max-w-4xl, .max-w-6xl {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
+            .text-5xl {
+                font-size: 2rem;
+            }
+            
+            .text-6xl {
+                font-size: 2.25rem;
+            }
+            
+            .profile-image {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .grid-cols-3 {
+                gap: 1rem;
+            }
+            
+            .grid-cols-3 > div {
+                margin-bottom: 1rem;
+            }
+            
+            .flex-col {
+                gap: 1rem;
+            }
+            
+            .project-image {
+                height: 150px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .text-5xl {
+                font-size: 1.75rem;
+            }
+            
+            .text-6xl {
+                font-size: 2rem;
+            }
+            
+            .text-xl {
+                font-size: 1.125rem;
+            }
+            
+            .text-2xl {
+                font-size: 1.25rem;
+            }
+            
+            .portfolio-section {
+                padding: 3rem 0;
+            }
+            
+            .profile-image {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .grid-cols-3 {
+                gap: 0.5rem;
+            }
+            
+            .grid-cols-3 > div {
+                margin-bottom: 0.5rem;
+            }
+            
+            .flex-col {
+                gap: 0.5rem;
+            }
+            
+            .project-image {
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Landing Page -->
+    <div id="landing-page" class="min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-black flex items-center justify-center p-8 relative overflow-hidden">
+        <!-- Animated Background Elements -->
+        <div class="absolute inset-0">
+            <div class="absolute top-20 left-20 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+            <div class="absolute top-40 right-20 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
+            <div class="absolute bottom-20 left-1/2 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
+        </div>
+        
+        <div class="text-center relative z-10">
+            <!-- MacBook Design (Hidden on mobile) -->
+            <div class="relative mx-auto mb-8 macbook-container">
+                <!-- MacBook Base/Bottom -->
+                <div class="macbook-base w-[600px] h-8 bg-gradient-to-r from-gray-300 via-gray-200 to-gray-300 rounded-b-3xl mx-auto shadow-2xl relative">
+                    <!-- Apple Logo -->
+                    <div class="absolute top-1 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gray-400 rounded-full opacity-60"></div>
+                    <!-- Ventilation -->
+                    <div class="absolute top-2 left-1/2 transform -translate-x-1/2 flex space-x-1">
+                        <div class="w-1 h-1 bg-gray-400 rounded-full opacity-40"></div>
+                        <div class="w-1 h-1 bg-gray-400 rounded-full opacity-40"></div>
+                        <div class="w-1 h-1 bg-gray-400 rounded-full opacity-40"></div>
+                    </div>
+                </div>
+                
+                <!-- MacBook Screen -->
+                <div class="macbook-screen relative">
+                    <!-- Screen Bezel -->
+                    <div class="w-[580px] h-[360px] bg-gradient-to-br from-gray-800 to-black rounded-t-2xl mx-auto p-3 shadow-2xl border border-gray-700">
+                        <!-- Actual Screen -->
+                        <div class="w-full h-full bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 rounded-xl relative overflow-hidden cursor-pointer macbook-display" id="macbook-screen">
+                            <!-- Screen Reflection -->
+                            <div class="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent pointer-events-none"></div>
+                            
+                            <!-- macOS-style Desktop -->
+                            <div class="absolute inset-0 p-8">
+                                <!-- Menu Bar -->
+                                <div class="flex justify-between items-center mb-8 text-white/80 text-sm">
+                                    <div class="flex items-center space-x-4">
+                                        <span class="font-semibold">🍎</span>
+                                        <span>Portfolio</span>
+                                    </div>
+                                    <div class="flex items-center space-x-4">
+                                        <span>🔋 100%</span>
+                                        <span>📶</span>
+                                        <span>12:34 PM</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Main Content -->
+                                <div class="flex flex-col items-center justify-center h-full -mt-16">
+                                    <!-- Portfolio Icon -->
+                                    <div class="w-24 h-24 bg-gradient-to-br from-blue-400 to-purple-600 rounded-2xl mb-6 flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300">
+                                        <span class="text-white text-3xl font-bold">VAI</span>
+                                    </div>
+                                    
+                                    <!-- Click Here Button -->
+                                    <button id="click-here-btn" class="click-button bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border border-white/20">
+                                        <span class="flex items-center space-x-2">
+                                            <span>Open Portfolio</span>
+                                            <span class="text-xl">→</span>
+                                        </span>
+                                    </button>
+                                    
+                                    <!-- Dock -->
+                                    <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2">
+                                        <div class="flex items-center space-x-2 bg-white/10 backdrop-blur-md rounded-2xl px-4 py-2 border border-white/20">
+                                            <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
+                                                <i class="fab fa-react text-white"></i>
+                                            </div>
+                                            <div class="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center">
+                                                <i class="fab fa-node-js text-white"></i>
+                                            </div>
+                                            <div class="w-8 h-8 bg-red-500 rounded-lg flex items-center justify-center">
+                                                <i class="fab fa-python text-white"></i>
+                                            </div>
+                                            <div class="w-8 h-8 bg-yellow-500 rounded-lg flex items-center justify-center">
+                                                <i class="fab fa-aws text-white"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Screen Glow Effect -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-blue-500/20 to-transparent pointer-events-none"></div>
+                        </div>
+                        
+                        <!-- Camera -->
+                        <div class="absolute top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gray-600 rounded-full"></div>
+                    </div>
+                </div>
+                
+                <!-- MacBook Keyboard Area -->
+                <div class="w-[580px] h-32 bg-gradient-to-br from-gray-200 to-gray-300 mx-auto rounded-b-2xl shadow-inner relative">
+                    <!-- Trackpad -->
+                    <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-24 h-16 bg-gray-100 rounded-lg shadow-inner border border-gray-300"></div>
+                    
+                    <!-- Keyboard Keys (simplified) -->
+                    <div class="absolute top-2 left-1/2 transform -translate-x-1/2 grid grid-cols-12 gap-1 w-96">
+                        <!-- Row 1 -->
+                        <div class="w-6 h-4 bg-gray-50 rounded shadow-sm"></div>
+                        <div class="w-6 h-4 bg-gray-50 rounded shadow-sm"></div>
+                        <div class="w-6 h-4 bg-gray-50 rounded shadow-sm"></div>
+                        <div class="w-6 h-4 bg-gray-50 rounded shadow-sm"></div>
+                        <div class="w-6 h-4 bg-gray-50 rounded shadow-sm"></div>
+                        <div class="w-6 h-4 bg-gray-50 rounded shadow-sm"></div>
+                        <div class="w-6 h-4 bg-gray-50 rounded shadow-sm"></div>
+                        <div class="w-6 h-4 bg-gray-50 rounded shadow-sm"></div>
+                        <div class="w-6 h-4 bg-gray-50 rounded shadow-sm"></div>
+                        <div class="w-6 h-4 bg-gray-50 rounded shadow-sm"></div>
+                        <div class="w-6 h-4 bg-gray-50 rounded shadow-sm"></div>
+                        <div class="w-6 h-4 bg-gray-50 rounded shadow-sm"></div>
+                        
+                        <!-- Row 2 -->
+                        <div class="w-6 h-4 bg-gray-50 rounded shadow-sm"></div>
+                        <div class="w-6 h-4 bg-gray-50 rounded shadow-sm"></div>
+                        <div class="w-6 h-4 bg-gray-50 rounded shadow-sm"></div>
+                        <div class="w-6 h-4 bg-gray-50 rounded shadow-sm"></div>
+                        <div class="w-6 h-4 bg-gray-50 rounded shadow-sm"></div>
+                        <div class="w-6 h-4 bg-gray-50 rounded shadow-sm"></div>
+                        <div class="w-6 h-4 bg-gray-50 rounded shadow-sm"></div>
+                        <div class="w-6 h-4 bg-gray-50 rounded shadow-sm"></div>
+                        <div class="w-6 h-4 bg-gray-50 rounded shadow-sm"></div>
+                        <div class="w-6 h-4 bg-gray-50 rounded shadow-sm"></div>
+                        <div class="w-6 h-4 bg-gray-50 rounded shadow-sm"></div>
+                        <div class="w-6 h-4 bg-gray-50 rounded shadow-sm"></div>
+                        
+                        <!-- Spacebar -->
+                        <div class="col-span-6 w-full h-4 bg-gray-50 rounded shadow-sm"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mobile-friendly button (hidden on desktop) -->
+            <button id="mobile-open-btn" class="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border border-white/20 hidden">
+                <span class="flex items-center space-x-2">
+                    <span>Open Portfolio</span>
+                    <span class="text-xl">→</span>
+                </span>
+            </button>
+            
+            <h1 class="text-5xl font-bold text-white mb-6 tracking-tight">Welcome to My Digital World</h1>
+            <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+                Click on the MacBook screen to explore my portfolio and discover amazing projects
+            </p>
+            
+            <!-- Floating Elements -->
+            <div class="flex justify-center space-x-8 text-white/60">
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mb-2 backdrop-blur-sm">
+                        <i class="fas fa-code text-xl"></i>
+                    </div>
+                    <span class="text-sm">Developer</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mb-2 backdrop-blur-sm">
+                        <i class="fas fa-paint-brush text-xl"></i>
+                    </div>
+                    <span class="text-sm">Designer</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mb-2 backdrop-blur-sm">
+                        <i class="fas fa-rocket text-xl"></i>
+                    </div>
+                    <span class="text-sm">Innovator</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Portfolio Website -->
+    <div id="portfolio-site" class="hidden">
+        <!-- Mobile Navigation -->
+        <div class="mobile-nav">
+            <div class="mobile-nav-content">
+                <div class="text-xl font-bold text-gray-800 flex items-center">
+                    <i class="fas fa-code text-blue-600 mr-2"></i>
+                    Venkata Avinash
+                </div>
+                <div class="hamburger" id="mobile-nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="mobile-nav-links" id="mobile-nav-links">
+                <a href="#" class="mobile-nav-link active" data-section="home">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="#" class="mobile-nav-link" data-section="about">
+                    <i class="fas fa-user"></i> About Me
+                </a>
+                <a href="#" class="mobile-nav-link" data-section="experience">
+                    <i class="fas fa-briefcase"></i> Experience
+                </a>
+                <a href="#" class="mobile-nav-link" data-section="projects">
+                    <i class="fas fa-project-diagram"></i> Projects
+                </a>
+                <a href="#" class="mobile-nav-link" data-section="contact">
+                    <i class="fas fa-envelope"></i> Contact
+                </a>
+            </div>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <nav class="desktop-nav bg-white shadow-lg fixed w-full top-0 z-50">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="flex justify-between items-center py-4">
+                    <div class="text-2xl font-bold text-gray-800 flex items-center">
+                        <i class="fas fa-code text-blue-600 mr-2"></i>
+                        Venkata Avinash Irupani
+                    </div>
+                    <div class="flex space-x-8">
+                        <a href="#" class="nav-link active text-gray-700 hover:text-blue-600 font-medium" data-section="home">
+                            <i class="fas fa-home mr-1"></i> Home
+                        </a>
+                        <a href="#" class="nav-link text-gray-700 hover:text-blue-600 font-medium" data-section="about">
+                            <i class="fas fa-user mr-1"></i> About Me
+                        </a>
+                        <a href="#" class="nav-link text-gray-700 hover:text-blue-600 font-medium" data-section="experience">
+                            <i class="fas fa-briefcase mr-1"></i> Experience
+                        </a>
+                        <a href="#" class="nav-link text-gray-700 hover:text-blue-600 font-medium" data-section="projects">
+                            <i class="fas fa-project-diagram mr-1"></i> Projects
+                        </a>
+                        <a href="#" class="nav-link text-gray-700 hover:text-blue-600 font-medium" data-section="contact">
+                            <i class="fas fa-envelope mr-1"></i> Contact
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Home Section -->
+        <section id="home" class="portfolio-section bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 pt-20 relative overflow-hidden">
+            <!-- Background Elements -->
+            <div class="absolute inset-0 overflow-hidden">
+                <div class="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-3xl"></div>
+                <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full blur-3xl"></div>
+            </div>
+            
+            <div class="max-w-4xl mx-auto text-center px-4 relative z-10">
+                <img src="./images/Abhi.jpg" alt="Profile" class="profile-image mx-auto mb-8 slide-in-scale">
+                <h1 class="text-6xl font-bold bg-gradient-to-r from-gray-800 via-blue-800 to-purple-800 bg-clip-text text-transparent mb-6 tracking-tight slide-in-left stagger-1">
+                    Hello, I'm Venkata Avinash Irupani
+                </h1>
+                <p class="text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed slide-in-left stagger-2">
+                    A passionate full-stack developer creating amazing digital experiences with cutting-edge technologies. 
+                    Welcome to my portfolio where creativity meets functionality.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center slide-in-up stagger-3">
+                    <button class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-10 py-4 rounded-2xl font-semibold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 border border-white/20">
+                        <i class="fas fa-eye mr-2"></i> Explore My Work
+                    </button>
+                </div>
+                
+                <!-- Floating Stats -->
+                <div class="grid grid-cols-3 gap-8 mt-16 max-w-2xl mx-auto slide-in-up stagger-4">
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-blue-600 mb-2">10+</div>
+                        <div class="text-gray-600">Projects</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-purple-600 mb-2">2+</div>
+                        <div class="text-gray-600">Years Experience</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-indigo-600 mb-2">20+</div>
+                        <div class="text-gray-600">Technologies</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="portfolio-section bg-white hidden">
+            <div class="max-w-6xl mx-auto px-4 py-20">
+                <h2 class="text-4xl font-bold text-center text-gray-800 mb-12 slide-in-up">
+                    <i class="fas fa-user text-blue-600 mr-3"></i> About Me
+                </h2>
+                
+                <div class="mb-12 slide-in-up stagger-1">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-6">My Story</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        I'm a dedicated full-stack developer with 2+ years of experience creating 
+                        web applications that solve real-world problems. My journey started with 
+                        curiosity about how websites work, and it has evolved into a passion for 
+                        building exceptional user experiences.
+                    </p>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        When I'm not coding, you can find me exploring new technologies, 
+                        contributing to open-source projects, or enjoying a good cup of coffee 
+                        while reading about the latest industry trends.
+                    </p>
+                </div>
+                
+                <div class="slide-in-up stagger-2">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-6">Skills & Technologies</h3>
+                    <div class="mb-8">
+                        <h4 class="text-lg font-medium text-gray-700 mb-4">
+                            <i class="fas fa-code text-blue-500 mr-2"></i> Programming Languages
+                        </h4>
+                        <div class="flex flex-wrap gap-3 mb-6">
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                                <i class="fab fa-cuttlefish tech-icon"></i> C
+                            </span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                                <i class="fab fa-c-plus-plus tech-icon"></i> C++
+                            </span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                                <i class="fab fa-java tech-icon"></i> Java
+                            </span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                                <i class="fab fa-python tech-icon"></i> Python
+                            </span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                                <i class="fab fa-js-square tech-icon"></i> JavaScript (ES6+)
+                            </span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                                <i class="fas fa-code tech-icon"></i> TypeScript
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <h4 class="text-lg font-medium text-gray-700 mb-4">
+                            <i class="fas fa-laptop-code text-blue-500 mr-2"></i> Web Technologies
+                        </h4>
+                        <div class="flex flex-wrap gap-3 mb-6">
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                                <i class="fab fa-html5 tech-icon"></i> HTML5
+                            </span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                                <i class="fab fa-css3-alt tech-icon"></i> CSS3
+                            </span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                                <i class="fab fa-bootstrap tech-icon"></i> Bootstrap
+                            </span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                                <i class="fab fa-react tech-icon"></i> React.js
+                            </span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                                <i class="fab fa-angular tech-icon"></i> Angular
+                            </span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                                <i class="fab fa-node-js tech-icon"></i> Node.js
+                            </span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                                <i class="fas fa-server tech-icon"></i> Express.js
+                            </span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                                <i class="fas fa-code tech-icon"></i> REST APIs
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <h4 class="text-lg font-medium text-gray-700 mb-4">
+                            <i class="fas fa-database text-blue-500 mr-2"></i> Databases & DevOps
+                        </h4>
+                        <div class="flex flex-wrap gap-3 mb-6">
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                                <i class="fas fa-database tech-icon"></i> MySQL
+                            </span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                                <i class="fas fa-database tech-icon"></i> SQL Server
+                            </span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                                <i class="fas fa-tachometer-alt tech-icon"></i> SQL Query Optimization
+                            </span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                                <i class="fab fa-aws tech-icon"></i> AWS (EC2)
+                            </span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                                <i class="fas fa-server tech-icon"></i> GoDaddy
+                            </span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                                <i class="fas fa-server tech-icon"></i> Hostinger
+                            </span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                                <i class="fab fa-github tech-icon"></i> GitHub Actions
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <h4 class="text-lg font-medium text-gray-700 mb-4">
+                            <i class="fas fa-tools text-blue-500 mr-2"></i> Tools & Frameworks
+                        </h4>
+                        <div class="flex flex-wrap gap-3 mb-6">
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                                <i class="fas fa-cube tech-icon"></i> Webpack
+                            </span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                                <i class="fab fa-npm tech-icon"></i> NPM
+                            </span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                                <i class="fas fa-code tech-icon"></i> Babel
+                            </span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                                <i class="fab fa-github tech-icon"></i> GitHub
+                            </span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                                <i class="fas fa-vial tech-icon"></i> React Testing Library
+                            </span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                                <i class="fas fa-vial tech-icon"></i> Jest
+                            </span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                                <i class="fas fa-lock tech-icon"></i> JWT Authentication
+                            </span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                                <i class="fas fa-sitemap tech-icon"></i> MVC Architecture
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <h4 class="text-lg font-medium text-gray-700 mb-4">
+                            <i class="fas fa-star text-blue-500 mr-2"></i> Other Skills
+                        </h4>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                                <i class="fas fa-sync-alt tech-icon"></i> CI/CD
+                            </span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                                <i class="fas fa-project-diagram tech-icon"></i> Data Structures
+                            </span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                                <i class="fas fa-object-group tech-icon"></i> OOP
+                            </span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                                <i class="fas fa-brain tech-icon"></i> AI/ML
+                            </span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                                <i class="fas fa-robot tech-icon"></i> OpenAI API
+                            </span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                                <i class="fas fa-tasks tech-icon"></i> Agile (Scrum)
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-lg font-medium text-gray-700 mb-4">
+                            <i class="fas fa-language text-blue-500 mr-2"></i> Languages
+                        </h4>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                                <i class="fas fa-globe tech-icon"></i> English
+                            </span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                                <i class="fas fa-globe-asia tech-icon"></i> Telugu
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="portfolio-section bg-gray-50 hidden">
+            <div class="max-w-4xl mx-auto px-4 py-20">
+                <h2 class="text-4xl font-bold text-center text-gray-800 mb-12 slide-in-up">
+                    <i class="fas fa-briefcase text-blue-600 mr-3"></i> Work Experience
+                </h2>
+                
+                <div class="slide-in-up stagger-1">
+                    <div class="experience-item">
+                        <h3 class="text-2xl font-semibold text-gray-800">Full Stack Developer</h3>
+                        <p class="text-lg text-blue-600 font-medium">
+                            <i class="fas fa-building mr-2"></i> Magnum Technologies Services
+                        </p>
+                        <p class="text-gray-500 mb-4">
+                            <i class="fas fa-map-marker-alt mr-2"></i> Bangalore, KA, India | 
+                            <i class="far fa-calendar-alt mr-2 ml-4"></i> 05/2023 - 07/2025
+                        </p>
+                        
+                        <ul class="text-gray-600 space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Led the design and development of scalable web applications using React.js, Node.js, FastAPI, and TypeScript, serving over 1,200 daily active users with latency under 200ms and ensuring robust performance across devices.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Refactored legacy codebases to adopt React, JavaScript (ES6+), and TypeScript, resulting in a 30% reduction in frontend load times and a 40% decrease in bug reports through improved maintainability and code quality.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Strengthened security posture by implementing JWT authentication and Role-Based Access Control (RBAC), reducing unauthorized access by 90% and enhancing user permission management.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Achieved 95% automated test coverage with Jest, React Testing Library, integrated testing into CI/CD pipelines using GitHub Actions facilitating frequent and seamless deployments in Agile (Scrum) environments.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Improved system reliability and monitoring by integrating centralized logging, error tracking, and telemetry dashboards, and implemented an AI-powered chatbot using OpenAI API to automate support workflows and reduce manual intervention.</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="mt-4">
+                            <p class="text-gray-700 font-medium">
+                                <i class="fas fa-tools mr-2"></i> Environment & Tools:
+                            </p>
+                            <p class="text-gray-600">React.js, Node.js, FastAPI, TypeScript, JavaScript (ES6+), HTML5, CSS3, Bootstrap, MySQL, MongoDB, REST APIs, JWT, Docker, Git, GitHub Actions, AWS EC2/S3, Jest, Agile/Scrum, CI/CD, GoDaddy, Hostinger, AI/ML, OpenAI API.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <h3 class="text-2xl font-semibold text-gray-800">Android Developer, Intern</h3>
+                        <p class="text-lg text-blue-600 font-medium">
+                            <i class="fas fa-building mr-2"></i> Fabin Technologies Services
+                        </p>
+                        <p class="text-gray-500 mb-4">
+                            <i class="fas fa-map-marker-alt mr-2"></i> Kakinada, AP, India | 
+                            <i class="far fa-calendar-alt mr-2 ml-4"></i> 03/2021 - 04/2021
+                        </p>
+                        
+                        <ul class="text-gray-600 space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Developed and optimized Android UI using Java and XML, improving app navigation and boosting rendering performance by 20%.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Contributed to 90% of code merges and completed the full app lifecycle from design to deployment in 4 weeks.</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="mt-4">
+                            <p class="text-gray-700 font-medium">
+                                <i class="fas fa-tools mr-2"></i> Environment & Tools:
+                            </p>
+                            <p class="text-gray-600">Java, XML, Android Studio, Git, Agile (Scrum).</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-16 slide-in-up stagger-2">
+                    <h3 class="text-3xl font-semibold text-gray-800 mb-6">
+                        <i class="fas fa-graduation-cap text-blue-600 mr-3"></i> Education
+                    </h3>
+                    
+                    <div class="experience-item">
+                        <h3 class="text-2xl font-semibold text-gray-800">Bachelor of Engineering</h3>
+                        <p class="text-lg text-blue-600 font-medium">
+                            <i class="fas fa-university mr-2"></i> Saveetha School Of Engineering
+                        </p>
+                        <p class="text-gray-500 mb-4">
+                            <i class="fas fa-map-marker-alt mr-2"></i> Chennai, TN, India | 
+                            <i class="far fa-calendar-alt mr-2 ml-4"></i> 06/2019 - 08/2023
+                        </p>
+                        <p class="text-gray-600">
+                            <i class="fas fa-graduation-cap mr-2"></i> Major in Computer Science Engineering
+                        </p>
+                    </div>
+                    <div class="experience-item">
+                        <h3 class="text-2xl font-semibold text-gray-800">Intermediate 12th</h3>
+                        <p class="text-lg text-blue-600 font-medium">
+                            <i class="fas fa-university mr-2"></i> Narayana Junior College
+                        </p>
+                        <p class="text-gray-500 mb-4">
+                            <i class="fas fa-map-marker-alt mr-2"></i> Nellore, AP, India | 
+                            <i class="far fa-calendar-alt mr-2 ml-4"></i> 06/2017 - 03/2019
+                        </p>
+                        <p class="text-gray-600">
+                            <i class="fas fa-graduation-cap mr-2"></i> Major in Mathematics, Physics and Chemistry
+                        </p>
+                    </div>
+                </div>
+                
+                
+                <div class="mt-16 slide-in-up stagger-3">
+                    <h3 class="text-3xl font-semibold text-gray-800 mb-6">
+                        <i class="fas fa-trophy text-blue-600 mr-3"></i> Highlights & Certifications
+                    </h3>
+                    
+                    <ul class="text-gray-600 space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-award text-yellow-500 mt-1 mr-2"></i>
+                            <span>Awarded "Best Developer of the Quarter" for backend performance optimization, reducing response time by 40%.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-award text-yellow-500 mt-1 mr-2"></i>
+                            <span>Automated deployment workflows and introduced reusable frontend components, accelerating release cycles by up to 50%.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-certificate text-yellow-500 mt-1 mr-2"></i>
+                            <span>Certified in Oracle Cloud Infrastructure 2025 DevOps (Oracle), Generative AI Essentials (Microsoft + LinkedIn), Frontend Development (React) and SQL Advanced (HackerRank).</span>
+                        </li>
+                    </ul>
+                    
+                    <div class="flex flex-wrap mt-4">
+                        <span class="cert-badge">
+                            <i class="fas fa-certificate mr-1"></i> Oracle Cloud Infrastructure 2025 DevOps
+                        </span>
+                        <span class="cert-badge">
+                            <i class="fas fa-certificate mr-1"></i> Generative AI Essentials
+                        </span>
+                        <span class="cert-badge">
+                            <i class="fas fa-certificate mr-1"></i> Frontend Development (React)
+                        </span>
+                        <span class="cert-badge">
+                            <i class="fas fa-certificate mr-1"></i> SQL Advanced
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="portfolio-section bg-white hidden">
+            <div class="max-w-6xl mx-auto px-4 py-20">
+                <h2 class="text-4xl font-bold text-center text-gray-800 mb-12 slide-in-up">
+                    <i class="fas fa-project-diagram text-blue-600 mr-3"></i> My Projects
+                </h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Project 1 -->
+                    <div class="project-card bg-white rounded-lg p-6 shadow-lg slide-in-left stagger-1">
+                        <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="School Management System" class="project-image w-full mb-4">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">School Operations Management System</h3>
+                        <p class="text-gray-600 mb-4">
+                            A full-stack web portal for managing attendance, communication, and administration for 1,200+ students and staff.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm flex items-center">
+                                <i class="fab fa-react mr-1"></i> React.js
+                            </span>
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-sm flex items-center">
+                                <i class="fab fa-node-js mr-1"></i> Node.js
+                            </span>
+                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-sm flex items-center">
+                                <i class="fas fa-database mr-1"></i> MySQL
+                            </span>
+                            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-sm flex items-center">
+                                <i class="fas fa-code mr-1"></i> REST APIs
+                            </span>
+                            <span class="bg-red-100 text-red-800 px-2 py-1 rounded text-sm flex items-center">
+                                <i class="fab fa-aws mr-1"></i> AWS EC2
+                            </span>
+                            <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded text-sm flex items-center">
+                                <i class="fas fa-robot mr-1"></i> OpenAI API
+                            </span>
+                        </div>
+                        <div class="text-gray-600 mb-4">
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>Built 300+ secure RESTful APIs with Node.js, implementing role-based access control (RBAC)</li>
+                                <li>Created dynamic, responsive UIs using React.js and Context API</li>
+                                <li>Optimized SQL queries and database indexing, cutting backend latency by 40%</li>
+                                <li>Integrated an AI-powered chatbot using OpenAI API</li>
+                            </ul>
+                        </div>
+                        <div class="flex space-x-3">
+                            <button class="text-blue-600 hover:text-blue-800 font-medium">
+                                <i class="fas fa-external-link-alt mr-1"></i> Live Demo
+                            </button>
+                            <button class="text-gray-600 hover:text-gray-800 font-medium">
+                                <i class="fab fa-github mr-1"></i> GitHub
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-card bg-white rounded-lg p-6 shadow-lg slide-in-up stagger-2">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80" alt="Android App" class="project-image w-full mb-4">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Android Application Design Based on Web Development</h3>
+                        <p class="text-gray-600 mb-4">
+                            Built an Android app using Java and XML in Android Studio, improving mobile user experience by 30% through web-based feature integration.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm flex items-center">
+                                <i class="fab fa-java mr-1"></i> Java
+                            </span>
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-sm flex items-center">
+                                <i class="fas fa-code mr-1"></i> XML
+                            </span>
+                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-sm flex items-center">
+                                <i class="fab fa-android mr-1"></i> Android Studio
+                            </span>
+                            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-sm flex items-center">
+                                <i class="fas fa-globe mr-1"></i> Web Integration
+                            </span>
+                        </div>
+                        <div class="text-gray-600 mb-4">
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>Followed the complete SDLC, applying UI/UX principles</li>
+                                <li>Boosted responsive design and usability by 25%</li>
+                                <li>Improved mobile user experience by 30%</li>
+                            </ul>
+                        </div>
+                        <div class="flex space-x-3">
+                            <button class="text-blue-600 hover:text-blue-800 font-medium">
+                                <i class="fas fa-external-link-alt mr-1"></i> Live Demo
+                            </button>
+                            <button class="text-gray-600 hover:text-gray-800 font-medium">
+                                <i class="fab fa-github mr-1"></i> GitHub
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="portfolio-section bg-gray-50 hidden">
+            <div class="max-w-4xl mx-auto px-4 py-20">
+                <h2 class="text-4xl font-bold text-center text-gray-800 mb-12 slide-in-up">
+                    <i class="fas fa-envelope text-blue-600 mr-3"></i> Get In Touch
+                </h2>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="slide-in-left stagger-1">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-6">Let's Connect</h3>
+                        <p class="text-gray-600 mb-8 leading-relaxed">
+                            I'm always interested in new opportunities and exciting projects. 
+                            Whether you have a question or just want to say hi, feel free to reach out!
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <span class="text-blue-600 mr-3 text-xl"><i class="fas fa-envelope"></i></span>
+                                <span class="text-gray-700">venkataavinashirupani@gmail.com</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-blue-600 mr-3 text-xl"><i class="fas fa-phone"></i></span>
+                                <span class="text-gray-700">+91 7702204745</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-blue-600 mr-3 text-xl"><i class="fab fa-linkedin"></i></span>
+                                <span class="text-gray-700">LinkedIn: Venkata Avinash Irupani</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-blue-600 mr-3 text-xl"><i class="fab fa-github"></i></span>
+                                <span class="text-gray-700">GitHub: Avinash9117</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <!-- Resume download section removed -->
+                        </div>
+                    </div>
+                    <div class="slide-in-right stagger-2">
+                        <form class="contact-form space-y-6">
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">
+                                    <i class="fas fa-user mr-2"></i> Name
+                                </label>
+                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none" placeholder="Your Name">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">
+                                    <i class="fas fa-envelope mr-2"></i> Email
+                                </label>
+                                <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none" placeholder="your.email@example.com">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">
+                                    <i class="fas fa-comment mr-2"></i> Message
+                                </label>
+                                <textarea rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none" placeholder="Your message here..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                                <i class="fas fa-paper-plane mr-2"></i> Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Check screen size and adjust visibility of elements
+        function checkScreenSize() {
+            const isMobile = window.innerWidth <= 768;
+            
+            // Show/hide MacBook based on screen size
+            const macbookContainer = document.querySelector('.macbook-container');
+            const mobileButton = document.getElementById('mobile-open-btn');
+            
+            if (isMobile) {
+                macbookContainer.style.display = 'none';
+                mobileButton.classList.remove('hidden');
+            } else {
+                macbookContainer.style.display = 'block';
+                mobileButton.classList.add('hidden');
+            }
+        }
+        
+        // Run on page load and window resize
+        window.addEventListener('load', checkScreenSize);
+        window.addEventListener('resize', checkScreenSize);
+
+        // Landing page functionality
+        document.getElementById('click-here-btn').addEventListener('click', openPortfolio);
+        document.getElementById('mobile-open-btn').addEventListener('click', openPortfolio);
+        
+        // Also make the entire MacBook screen clickable
+        document.getElementById('macbook-screen').addEventListener('click', openPortfolio);
+        
+        function openPortfolio() {
+            document.getElementById('landing-page').style.display = 'none';
+            document.getElementById('portfolio-site').classList.remove('hidden');
+            document.getElementById('portfolio-site').classList.add('slide-in-scale');
+        }
+
+        // Mobile navigation functionality
+        const mobileNavToggle = document.getElementById('mobile-nav-toggle');
+        const mobileNavLinks = document.getElementById('mobile-nav-links');
+        
+        mobileNavToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mobileNavLinks.classList.toggle('active');
+        });
+
+        // Navigation functionality
+        const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+        const sections = document.querySelectorAll('.portfolio-section');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Close mobile menu if open
+                mobileNavToggle.classList.remove('active');
+                mobileNavLinks.classList.remove('active');
+                
+                // Remove active class from all links
+                navLinks.forEach(l => l.classList.remove('active'));
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Hide all sections
+                sections.forEach(section => section.classList.add('hidden'));
+                
+                // Show target section
+                const targetSection = document.getElementById(this.dataset.section);
+                targetSection.classList.remove('hidden');
+                
+                // Add appropriate animation class based on section
+                if (this.dataset.section === 'home') {
+                    targetSection.classList.add('slide-in-scale');
+                } else {
+                    targetSection.classList.add('slide-in-up');
+                }
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            });
+        });
+
+        // Contact form functionality
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = this.querySelector('input[type="text"]').value;
+            const email = this.querySelector('input[type="email"]').value;
+            const message = this.querySelector('textarea').value;
+            
+            if (name && email && message) {
+                alert('Thank you for your message! I\'ll get back to you soon.');
+                this.reset();
+            } else {
+                alert('Please fill in all fields.');
+            }
+        });
+
+        // Resume download functionality removed
+
+        // Explore button functionality
+        const exploreButton = document.querySelector('#home button:first-of-type');
+        if (exploreButton) {
+            exploreButton.addEventListener('click', function() {
+                document.querySelector('[data-section="projects"]').click();
+            });
+        }
+    </script>
+</body>
+</html>
